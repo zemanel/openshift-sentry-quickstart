@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup
 
-setup(name='YourAppName',
-      version='1.0',
-      description='OpenShift App',
-      author='Your Name',
-      author_email='example@example.com',
-      url='http://www.python.org/sigs/distutils-sig/',
-#      install_requires=['Django>=1.3'],
+setup(name='sentry_now',
+      version='0.1',
+      description='Sentry on Openshift based on Python-2.7 Community Cartridge',
+      author=u'José Moreira',
+      author_email='zemanel@zemanel.eu',
+      url='https://github.com/getsentry/sentry/',
+      install_requires=[
+          'sentry',
+          'psycopg2',
+      ],
      )

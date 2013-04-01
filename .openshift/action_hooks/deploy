@@ -3,3 +3,15 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
+
+# activate cartridge virtualenv
+source ${OPENSHIFT_HOMEDIR}python-2.6/virtenv/bin/activate
+
+# create django cache table; will fail if it already exists
+sentry --config=${OPENSHIFT_REPO_DIR}/openshift.conf.py createcachetable django_cache
+
+# run database sync and South migrations
+sentry --config=${OPENSHIFT_REPO_DIR}/openshift.conf.py upgrade --noinput
+
+# collect static files for direct serving
+sentry --config=${OPENSHIFT_REPO_DIR}/openshift.conf.py collectstatic --clear --noinput
