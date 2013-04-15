@@ -8,7 +8,7 @@ setup(name='sentry_now',
       author_email='zemanel@zemanel.eu',
       url='https://github.com/getsentry/sentry/',
       install_requires=[
-          'sentry',
+          'sentry==5.4.5',
           'psycopg2',
       ],
      )
