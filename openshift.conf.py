@@ -12,13 +12,13 @@ sys.path.append(os.path.join(CONF_ROOT, 'libs', 'openshift'))
 
 DATABASES = {
     'default': {
-        'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
-        'NAME'      : os.environ['OPENSHIFT_APP_NAME'],
-        'USER'      : os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
-        'PASSWORD'  : os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
-        'HOST'      : os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
-        'PORT'      : os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['OPENSHIFT_APP_NAME'],
+        'USER': os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
+        'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
+        'HOST': os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
+        'PORT': os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
+    }
 }
 
 # enable database caching
@@ -26,7 +26,7 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
         'LOCATION': 'django_cache',
-        }
+    }
 }
 
 # disable task queue
@@ -35,13 +35,15 @@ SENTRY_USE_QUEUE = False
 # Generate a unique secure secret key based on Openshift environment variables
 
 import openshiftlibs
-default_keys = { 'SECRET_KEY': 'UmJUz9Efz9U7Bz6E2VQIC0TJySNQw3RwOfcfypgiV48D' }
+
+default_keys = {
+    'SECRET_KEY': 'UmJUz9Efz9U7Bz6E2VQIC0TJySNQw3RwOfcfypgiV48D'
+}
 use_keys = openshiftlibs.openshift_secure(default_keys)
 SENTRY_KEY = use_keys['SECRET_KEY']
 
-# You should configure the absolute URI to Sentry. It will attempt to guess it if you don't
-# but proxies may interfere with this.
-
+# Configure the absolute URI to Sentry.
+#It will attempt to guess it if you don't, but proxies may interfere with this.
 SENTRY_URL_PREFIX = 'https://' + os.environ['OPENSHIFT_GEAR_DNS']
 
 SENTRY_WEB_HOST = os.environ['OPENSHIFT_INTERNAL_IP']
@@ -52,10 +54,6 @@ SENTRY_WEB_OPTIONS = {
 }
 
 # Mail server configuration
-
-# For more information check Django's documentation:
-#  https://docs.djangoproject.com/en/1.3/topics/email/?from=olddocs#e-mail-backends
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'localhost'
@@ -72,7 +70,8 @@ STATIC_ROOT = os.path.join(CONF_ROOT, 'wsgi', 'static')
 STATIC_URL = '/static/'
 
 # http://twitter.com/apps/new
-# It's important that input a callback URL, even if its useless. We have no idea why, consult Twitter.
+# It's important that input a callback URL, even if its useless.
+# We have no idea why, consult Twitter.
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
 
