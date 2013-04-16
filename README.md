@@ -1,6 +1,10 @@
 Sentry on OpenShift
 ===================
 
+A http://github.com/dcramer/sentry quickstart project for Red Hat(c) OpenShift(c).
+
+[![Build Status](https://travis-ci.org/zemanel/openshift-sentry-quickstart.png)](https://travis-ci.org/zemanel/openshift-sentry-quickstart)
+
 Requirements
 ------------
 
