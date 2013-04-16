@@ -10,5 +10,8 @@ setup(name='sentry_now',
       install_requires=[
           'sentry==5.4.5',
           'psycopg2',
+          # testing
+          'selenium==2.32.0',
+          'flake8==2.0'
       ],
       )
