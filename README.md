@@ -3,19 +3,17 @@ Sentry on OpenShift
 
 A http://github.com/dcramer/sentry quickstart project for Red Hat(c) OpenShift(c).
 
-[![Build Status](https://travis-ci.org/zemanel/openshift-sentry-quickstart.png)](https://travis-ci.org/zemanel/openshift-sentry-quickstart)
-
 Requirements
 ------------
 
-- An Openshift account, with at least 3 gears available on the free PaaS https://openshift.redhat.com
+- An Openshift account, with at least 2 gears available on the free PaaS https://openshift.redhat.com
 - Openshift command-line tools: https://www.openshift.com/get-started#cli
-- Git SCM: http://git-scm.com 
+- Git SCM: http://git-scm.com
 
 Features
 --------
 
-- Python 2.6 scalable Openshift cartridge
+- Python 2.7 scalable Openshift cartridge
 - Django *staticfiles* support
 - Django Database caching
 - Django security unique secret key based on created instance
@@ -29,13 +27,13 @@ Replace **MyOpenshiftNamespace** with your chosen namespace. You can edit your n
 
 Replace **APP_NAME**'s value with your chosen app name. I've chosen **sentryweb** for this example.
 
-    $ export QUICKSTART_URL=git://github.com/zemanel/openshift-sentry-quickstart.git
+    $ export QUICKSTART_URL=git@github.com:joaoxsouls/openshift-sentry-quickstart.git
     $ export APP_NAME=sentryweb
     $ export APP_NAMESPACE=MyOpenshiftNamespace
 
-**Create Openshift application with Python 2.6, MongoDB 2.2, Postgres 8.4 cartridges, enabling scaling**
+**Create Openshift application with Python 2.7, MongoDB 2.2, Postgres 8.4 cartridges, enabling scaling**
 
-    $ rhc app create --scaling $APP_NAME python-2.6 mongodb-2.2 postgresql-8.4
+    $ rhc app create --scaling $APP_NAME python-2.7 mongodb-postgresql-8.4
 
 **Merge the quickstart repo with the git repo created by the Openshift client**
 
@@ -60,16 +58,16 @@ Django management commands, as creating superusers, can be ran by using SSH:
     $ rhc app ssh $APP_NAME
 
     # Activate the virtualenv
-    $ source ${OPENSHIFT_HOMEDIR}python-2.6/virtenv/bin/activate
+    $ source ${OPENSHIFT_HOMEDIR}python/virtenv/bin/activate
 
     # List available Django commands
-    $ sentry --config=${OPENSHIFT_REPO_DIR}/openshift.conf.py help
+    $ sentry --config=${OPENSHIFT_REPO_DIR}/sentry.conf.py help
 
 **Creating a new user**
 
 Since new account registration is disabled by default on the Sentry Openshift setttings, a Django user account can be created by using the **createsuperuser** command :
 
-    $ sentry --config=${OPENSHIFT_REPO_DIR}/openshift.conf.py createsuperuser
+    $ sentry --config=${OPENSHIFT_REPO_DIR}/sentry.conf.py createsuperuser
 
 You can now login with the account your created at
 
@@ -91,9 +89,3 @@ Contributing
 ------------
 
 Please send pull requests to the **develop** branch.
-
-Supporting
-----------
-
-Feel free to https://www.gittip.com/zemanel/ me <3
-
