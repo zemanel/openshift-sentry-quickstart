@@ -6,9 +6,9 @@ import sys
 sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'libs', 'openshift'))
 
 # Setup virtualenv
-virtenv = os.environ['APPDIR'] + '/virtenv/'
-os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.6/site-packages')
-virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
+virtualenv_location = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
+os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtualenv_location, 'lib/python2.6/site-packages')
+virtualenv = os.path.join(virtualenv_location, 'bin/activate_this.py')
 try:
     execfile(virtualenv, dict(__file__=virtualenv))
 except IOError:
@@ -16,7 +16,7 @@ except IOError:
 
 # Configure the application (Logan)
 from sentry.utils.runner import configure
-os.environ['SENTRY_CONF'] = os.environ['OPENSHIFT_REPO_DIR'] + 'openshift.conf.py'
+os.environ['SENTRY_CONF'] = os.environ['OPENSHIFT_REPO_DIR'] + 'sentry.conf.py'
 configure()
 
 # Build the wsgi app
