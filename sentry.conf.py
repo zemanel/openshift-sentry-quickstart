@@ -19,6 +19,7 @@ DATABASES['default'].update({
     'PORT': os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
 })
 
+#replace yours
 default_keys = {
     'SECRET_KEY': 'p*cch+!dmo_%visd87=$4%qoidi(-wmv^^c9vmvdyx(#eoehq+'
 }
