@@ -29,7 +29,7 @@ SENTRY_KEY = 'p*cch+!dmo_%visd87=$4%qoidi(-wmv^^c9vmvdyx(#eoehq+'
 SENTRY_PUBLIC = False
 
 SENTRY_URL_PREFIX = 'https://' + os.environ['OPENSHIFT_GEAR_DNS']
-
+#bypass sentry proxy settings, todo: implement middleware like https://docs.djangoproject.com/en/1.4/ref/request-response/#django.http.HttpRequest.get_host
 ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = os.path.join(CONF_ROOT, 'wsgi', 'static')
