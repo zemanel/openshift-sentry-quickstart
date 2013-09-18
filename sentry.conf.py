@@ -4,6 +4,9 @@ from sentry.conf.server import *
 
 CONF_ROOT = os.environ['OPENSHIFT_REPO_DIR']
 
+# append project security libraries to Python path
+sys.path.append(os.path.join(CONF_ROOT, 'libs', 'openshift'))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -20,11 +23,13 @@ DATABASES['default'].update({
 })
 
 #replace yours
+import openshiftlibs
+
 default_keys = {
     'SECRET_KEY': 'p*cch+!dmo_%visd87=$4%qoidi(-wmv^^c9vmvdyx(#eoehq+'
 }
-
-SENTRY_KEY = 'p*cch+!dmo_%visd87=$4%qoidi(-wmv^^c9vmvdyx(#eoehq+'
+use_keys = openshiftlibs.openshift_secure(default_keys)
+SENTRY_KEY = use_keys['SECRET_KEY']
 
 SENTRY_PUBLIC = False
 
