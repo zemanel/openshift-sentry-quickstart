@@ -91,3 +91,8 @@ Contributing
 ------------
 
 Please send pull requests to the **develop** branch.
+
+Supporting
+----------
+
+Feel free to https://www.gittip.com/zemanel/ me <3
