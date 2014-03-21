@@ -8,7 +8,7 @@ A http://github.com/dcramer/sentry quickstart project for Red Hat(c) OpenShift(c
 Requirements
 ------------
 
-- An Openshift account, with at least 2 gears available on the free PaaS https://openshift.redhat.com
+- An Openshift account, with at least 3 gears available on the free PaaS https://openshift.redhat.com
 - Openshift command-line tools: https://www.openshift.com/get-started#cli
 - Git SCM: http://git-scm.com
 
