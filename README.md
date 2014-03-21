@@ -25,17 +25,17 @@ Deploying to Openshift
 
 **Create some local environment variables for being DRY**
 
-Replace **MyOpenshiftNamespace** with your chosen namespace. You can edit your namespace at https://openshift.redhat.com/app/account/domain/edit
+Replace **MyOpenshiftNamespace** with your chosen namespace. You can edit your namespace at https://openshift.redhat.com/app/console/settings (domain section)
 
 Replace **APP_NAME**'s value with your chosen app name. I've chosen **sentryweb** for this example.
 
-    $ export QUICKSTART_URL=git@github.com:joaoxsouls/openshift-sentry-quickstart.git
+    $ export QUICKSTART_URL=git@github.com:zemanel/openshift-sentry-quickstart.git
     $ export APP_NAME=sentryweb
     $ export APP_NAMESPACE=MyOpenshiftNamespace
 
-**Create Openshift application with Python 2.7, MongoDB 2.2, Postgres 8.4 cartridges, enabling scaling**
+**Create Openshift application with Python 2.7, MongoDB 2.4, Postgres 8.4 cartridges, enabling scaling**
 
-    $ rhc app create --scaling $APP_NAME python-2.7 mongodb-postgresql-8.4
+    $ rhc app create --scaling $APP_NAME python-2.7 mongodb-2.4 postgresql-8.4
 
 **Merge the quickstart repo with the git repo created by the Openshift client**
 
